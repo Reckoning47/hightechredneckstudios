@@ -4,12 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Splash — Privacy Policy · High Tech Redneck Studios</title>
+  <meta name="description" content="Privacy policy for Splash, the plant care reminder app. Almost everything stays on your device." />
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
   <header class="site">
     <div class="inner">
-      <a class="brand" href="../">High Tech Redneck Studios</a>
+      <a class="brand" href="../"><span class="bracket">[</span>HTRN<span class="bracket">]</span> Studios</a>
       <nav>
         <a href="../">Home</a>
         <a href="../projects.html" class="active">Projects</a>
@@ -20,7 +21,7 @@
   <main class="wrap">
     <h1>Splash — Privacy Policy</h1>
     <p><strong>Effective date:</strong> 2026-05-10<br />
-       <strong>Last updated:</strong> 2026-05-10</p>
+       <strong>Last updated:</strong> 2026-07-26</p>
 
     <p>
       Splash ("the app") is a personal plant care reminder app. This policy describes what
@@ -33,10 +34,11 @@
 
     <h2>1. What the app does, in short</h2>
     <p>
-      Splash lets you keep a list of houseplants on your device, set reminders for care tasks
-      (water, fertilize, etc.), and — optionally — ask an AI service to identify a plant from a
-      photo or name and suggest a care schedule. Splash has no account, no login, and no server
-      of its own.
+      Splash lets you keep a list of houseplants on your device and set reminders for care tasks
+      (water, fertilize, and so on). Optionally, you can ask an AI service to identify a plant
+      from a photo or name and suggest a care schedule, or to assess a plant's health from a
+      photo and suggest a treatment plan. You can also export your plant library to a file and
+      import it on another device. Splash has no account, no login, and no server of its own.
     </p>
 
     <hr />
@@ -45,39 +47,53 @@
     <p>
       The following data is created and stored locally on your phone. It is <strong>not</strong>
       transmitted to Splash's developers (we have no server) and is <strong>not</strong> shared
-      with anyone except where you opt to use the AI features described in Section 3.
+      with anyone except where you opt to use the AI features described in Section 3 or the
+      export feature described in Section 4.
     </p>
     <ul>
       <li><strong>Plant entries</strong> — the nickname you give a plant, its species and common
-        name (if identified), care notes, scheduled reminder tasks, and timestamps of when you
-        last marked a task done.</li>
+        name (if identified), care notes, your own free-text notes, scheduled reminder tasks, and
+        timestamps of when you last marked a task done.</li>
       <li><strong>Plant photos</strong> — photos you take or pick from your library, stored in
-        the app's private documents directory.</li>
-      <li><strong>AI care suggestions</strong> — the care text returned by the AI for plants you
-        have identified is cached locally so the app does not re-call the AI.</li>
+        the app's private documents directory. This includes photos you submit for AI
+        identification or health diagnosis.</li>
+      <li><strong>AI results</strong> — the care text and health diagnoses returned by the AI are
+        stored locally on the relevant plant so the app does not have to re-query. Identification
+        results for plant names you have looked up are also cached locally for the same reason.</li>
       <li><strong>Your Gemini API key</strong> — if you choose to use AI features, the API key
         you paste into Settings is stored using the operating system's secure storage
         (<code>expo-secure-store</code>, which uses the Android Keystore / iOS Keychain). It is
         never sent anywhere except to Google when making AI calls.</li>
     </ul>
     <p>
-      This data is deleted when you uninstall the app or clear its storage from your phone's
-      system settings.
+      This data is deleted when you uninstall the app, use <strong>Settings → Wipe all
+      data</strong>, or clear the app's storage from your phone's system settings.
     </p>
 
     <hr />
 
     <h2>3. Information sent to third parties (only when you use these features)</h2>
 
-    <h3>3.a Google Gemini API (only when you use "Identify with AI")</h3>
-    <p>When you tap <strong>Identify with AI</strong> and then submit a plant name or photo:</p>
+    <h3>3.a Google Gemini API (only when you use an AI feature)</h3>
+    <p>
+      Splash contacts Google's Gemini API in exactly two situations, both of which require you to
+      tap a button first:
+    </p>
+    <ol>
+      <li><strong>Identify with AI</strong> — you submit a plant name and/or a photo to identify
+        the plant and generate a care plan.</li>
+      <li><strong>Diagnose plant</strong> — you submit a photo of a plant to assess its health
+        and generate a treatment plan. If the plant already has a species recorded, that species
+        name is sent along with the photo as context.</li>
+    </ol>
+    <p>In both cases:</p>
     <ul>
-      <li><strong>What is sent:</strong> the plant name you typed and/or the photo you provided,
+      <li><strong>What is sent:</strong> the photo and/or plant name or species you provided,
         along with your Gemini API key for authentication.</li>
       <li><strong>Where it goes:</strong> Google's Generative Language API
         (<code>generativelanguage.googleapis.com</code>).</li>
-      <li><strong>Purpose:</strong> to receive a structured identification and care plan, which
-        the app stores locally.</li>
+      <li><strong>Purpose:</strong> to receive a structured identification, care plan, or health
+        assessment, which the app stores locally.</li>
       <li><strong>Provider's terms:</strong> Google's handling of this data is governed by
         <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and the
         <a href="https://ai.google.dev/gemini-api/terms">Gemini API terms</a>. When using the
@@ -85,8 +101,8 @@
         not want that, you must use a paid Gemini tier and review Google's current policy for
         paid usage.</li>
       <li><strong>Your control:</strong> Splash does <strong>not</strong> call Gemini unless you
-        explicitly tap an "Identify with AI" action. Clear or remove your saved API key in
-        Settings to disable all AI features.</li>
+        explicitly tap "Identify with AI" or "Diagnose plant". Clear or remove your saved API key
+        in Settings to disable all AI features.</li>
     </ul>
 
     <h3>3.b Wikipedia (only when you identify a plant by name)</h3>
@@ -110,7 +126,36 @@
 
     <hr />
 
-    <h2>4. Information we do <em>not</em> collect</h2>
+    <h2>4. Export and import (data you move yourself)</h2>
+    <p>
+      Splash can export your plant library so you can back it up or move it to another device.
+      This feature does not send anything to us or to any third party — <strong>you</strong>
+      choose the destination.
+    </p>
+    <ul>
+      <li><strong>What the export file contains:</strong> every plant's name, species, common
+        name, care notes, your own notes, reminder schedules, task history timestamps, saved
+        health diagnoses, and each plant's photos embedded inside the file. The file is plain,
+        unencrypted JSON.</li>
+      <li><strong>What the export file does <em>not</em> contain:</strong> your Gemini API key.
+        The key is deliberately excluded so that a file you share cannot leak your credentials.
+        You re-enter your key on the new device.</li>
+      <li><strong>Where it goes:</strong> the file is written to the app's temporary storage and
+        handed to your operating system's share sheet. From there you decide — save to your
+        device, put it in a cloud drive, email it, send it to another phone. Once it leaves the
+        share sheet it is outside Splash's control and subject to whatever service you chose.</li>
+      <li><strong>Import:</strong> you pick a file with your device's file picker. Splash reads
+        it, adds those plants to your existing library, and schedules their reminders. Imported
+        plants are added alongside what you already have; nothing is overwritten.</li>
+    </ul>
+    <p>
+      <strong>Please treat export files as sensitive if your notes are sensitive.</strong> They
+      are unencrypted and contain your photos. Anyone who obtains the file can read it.
+    </p>
+
+    <hr />
+
+    <h2>5. Information we do <em>not</em> collect</h2>
     <p>Splash does not collect, transmit, or store:</p>
     <ul>
       <li>Account information, email addresses, names, phone numbers, or social-media identifiers.</li>
@@ -128,7 +173,7 @@
 
     <hr />
 
-    <h2>5. Permissions the app requests, and why</h2>
+    <h2>6. Permissions the app requests, and why</h2>
     <table>
       <thead>
         <tr><th>Permission</th><th>Why it is requested</th><th>Required?</th></tr>
@@ -141,13 +186,18 @@
         </tr>
         <tr>
           <td>Camera</td>
-          <td>To let you take a photo of a plant for the "Identify with AI" feature.</td>
+          <td>To let you take a photo of a plant for the "Identify with AI" or "Diagnose plant" features.</td>
           <td>Optional — only requested when you tap "Take photo".</td>
         </tr>
         <tr>
           <td>Photo library</td>
-          <td>To let you pick an existing photo for AI identification or as the plant's photo.</td>
+          <td>To let you pick an existing photo for AI identification, health diagnosis, or as the plant's photo.</td>
           <td>Optional — only requested when you tap "Pick from library".</td>
+        </tr>
+        <tr>
+          <td>File access</td>
+          <td>To read an export file you select when importing, and to hand an export file to the share sheet.</td>
+          <td>Optional — only used when you export or import.</td>
         </tr>
         <tr>
           <td>Internet</td>
@@ -163,21 +213,27 @@
 
     <hr />
 
-    <h2>6. Data retention and deletion</h2>
+    <h2>7. Data retention and deletion</h2>
     <ul>
-      <li>All plant data, photos, cached AI results, and your stored API key remain on your
-        device until you delete them in the app or uninstall the app.</li>
-      <li>Deleting a plant in the app cancels its scheduled reminders. The photo file associated
-        with that plant is removed from app storage.</li>
+      <li>All plant data, photos, cached AI results, saved diagnoses, and your stored API key
+        remain on your device until you delete them in the app or uninstall the app.</li>
+      <li>Deleting a plant in the app cancels its scheduled reminders and removes that plant's
+        photo from app storage.</li>
+      <li><strong>Settings → Wipe all data</strong> cancels every scheduled reminder and deletes
+        all plants, photos, cached AI results, and your saved API key in one action. There is no
+        undo.</li>
       <li>Clearing your Gemini API key in Settings removes it from secure storage. Past content
         already sent to Google is governed by Google's retention policies — Splash cannot delete
         data on Google's servers on your behalf.</li>
+      <li><strong>Export files you have already shared are outside Splash's reach.</strong>
+        Deleting data in the app does not delete copies you sent elsewhere; you must delete those
+        yourself.</li>
       <li>Uninstalling Splash deletes all local data the app created.</li>
     </ul>
 
     <hr />
 
-    <h2>7. Children</h2>
+    <h2>8. Children</h2>
     <p>
       Splash is not directed to children under the age of 13 (or the equivalent minimum age in
       your jurisdiction). The app does not knowingly collect personal information from children.
@@ -187,19 +243,21 @@
 
     <hr />
 
-    <h2>8. Security</h2>
+    <h2>9. Security</h2>
     <ul>
       <li>Your API key is stored using the platform's hardware-backed secure storage (Android
-        Keystore / iOS Keychain).</li>
+        Keystore / iOS Keychain), and is excluded from export files.</li>
       <li>Communication with the Gemini and Wikipedia APIs uses HTTPS.</li>
       <li>No data passes through a server operated by Splash's developers, because there is no
         such server.</li>
+      <li>Export files are <strong>not</strong> encrypted. This is a deliberate trade-off for
+        portability — see the warning in Section 4.</li>
     </ul>
     <p>No system is perfectly secure, but Splash minimizes risk by minimizing what it transmits.</p>
 
     <hr />
 
-    <h2>9. Your rights</h2>
+    <h2>10. Your rights</h2>
     <p>
       Because Splash does not collect or hold any of your data on its own infrastructure,
       requests for data access, correction, or deletion can be fulfilled entirely by you on your
@@ -208,10 +266,10 @@
     <ul>
       <li><strong>Access:</strong> all your plant data is visible inside the app.</li>
       <li><strong>Correction:</strong> edit any plant or task in the app.</li>
-      <li><strong>Deletion:</strong> delete plants, clear your API key, or uninstall the app to
-        remove everything Splash stores.</li>
-      <li><strong>Portability:</strong> export is not currently supported. If this matters to
-        you, contact us.</li>
+      <li><strong>Deletion:</strong> delete individual plants, clear your API key, use Settings →
+        Wipe all data, or uninstall the app.</li>
+      <li><strong>Portability:</strong> use <strong>Settings → Export plants</strong> to get a
+        complete copy of your data as a JSON file (see Section 4).</li>
     </ul>
     <p>
       For data already sent to Google or Wikipedia under Section 3, please use those providers'
@@ -220,7 +278,7 @@
 
     <hr />
 
-    <h2>10. Changes to this policy</h2>
+    <h2>11. Changes to this policy</h2>
     <p>
       If we change this policy, the new version will be posted with an updated "Last updated"
       date at the top. Material changes will be highlighted in the app's release notes.
@@ -228,7 +286,7 @@
 
     <hr />
 
-    <h2>11. Contact</h2>
+    <h2>12. Contact</h2>
     <p>
       Questions about this policy or about how Splash handles data:
       <a href="mailto:contact@descriptivetech.com">contact@descriptivetech.com</a>.
@@ -239,6 +297,9 @@
     <p><a href="./splash.html">← Back to Splash</a></p>
   </main>
 
-  <footer class="site">© High Tech Redneck Studios</footer>
+  <footer class="site">
+    <span class="motto">measure twice, deploy once</span>
+    © High Tech Redneck Studios
+  </footer>
 </body>
 </html>
